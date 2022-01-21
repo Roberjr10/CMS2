@@ -10,7 +10,7 @@ use App\Controller\PeliculaController;
 use App\Controller\PersonaController;
 
 //Guardo la ruta de public y la home para ruta que posteriormente utilizaremos para enlazar imagenes, css y js
-$_SESSION['public'] = '/CMS_2/public/';
+$_SESSION['public'] = '/cms2/public/';
 $_SESSION['home'] = $_SESSION['public'].'index.php/';
 
 //Defino y llamo a la función que autocargará las clases cuando se instancien

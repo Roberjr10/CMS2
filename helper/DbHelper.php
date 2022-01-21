@@ -12,7 +12,7 @@ class DbHelper {
         $opciones = [\PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"];
         try {
             $this->db = new \PDO(
-                'mysql:host=localhost;dbname=cms',
+                'mysql:host=localhost;dbname=cms2',
                 'rober-cms2',
                 'Rober_cms2',
                 $opciones);
