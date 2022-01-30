@@ -64,10 +64,10 @@ switch ($ruta){
         controlador()->acercade();
         break;
     case "peliculas":
-        controlador()->noticias();
+        controlador()->peliculas();
         break;
     case (strpos($ruta,"pelicula/") === 0):
-        controlador()->noticia(str_replace("pelicula/","",$ruta));
+        controlador()->pelicula(str_replace("pelicula/","",$ruta));
         break;
 
     //Back-end
@@ -78,10 +78,10 @@ switch ($ruta){
     case "admin/salir":
         controlador("personas")->salir();
         break;
-    case "admin/usuarios":
-        controlador("peronas")->index();
+    case "admin/personas":
+        controlador("personas")->index();
         break;
-    case "admin/usuarios/crear":
+    case "admin/personas/crear":
         controlador("personas")->crear();
         break;
     case (strpos($ruta,"admin/personas/editar/") === 0):

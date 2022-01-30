@@ -19,8 +19,8 @@ class Persona{
         $this->clave = ($data) ? $data->clave : null;
         $this->fecha_acceso = ($data) ? $data->fecha_acceso : null;
         $this->activo = ($data) ? $data->activo : null;
-        $this->acceso = ($data) ? $data->usuarios : null;
-        $this->peliculas = ($data) ? $data->noticias : null;
+        $this->acceso = ($data) ? $data->acceso : null;
+        $this->peliculas = ($data) ? $data->peliculas : null;
 
     }
 

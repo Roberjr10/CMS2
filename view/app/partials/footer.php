@@ -1,10 +1,10 @@
 </section>
 </main>
-<footer class="center-align">
+<footer class="text-center">
     © <?php echo date("Y") ?>
-    <a title="Jose Roberto Núñez Almonte">
+    <p>
        Jose Roberto Núñez Almonte
-    </a>
+    </p>
 </footer>
 
 </body>

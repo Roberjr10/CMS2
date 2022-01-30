@@ -1,0 +1,75 @@
+/*****************HEADER***************/
+main{
+    min-height: 120vh;
+}
+nav {
+    height: 80px;
+    background-color: #727171;
+}
+.brand-logo img {
+    width: 60px;
+    height: 60px;
+    margin-top: 10px;
+    margin-left: 30px;
+}
+
+.nav-link{
+    color: white;
+}
+
+/**************FOOTER********************/
+footer{
+    height: 50px;
+    background-color: #727171;
+    color: white;
+}
+footer p{
+    display: inline;
+    padding-top: 5px;
+}
+
+/******************************SECTION************************************/
+/* SECTION ************************************************************************************************************/
+.card{ margin-top: 20px;
+    margin-bottom: 20px
+}
+article {
+    min-height: 200px;
+}
+article img{
+    width: 100%;
+
+    margin-top: 15px;
+}
+
+.card-action{
+    text-align: center;
+}
+
+.card-action a {
+    color: orange;
+}
+.material-icons{
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+}
+
+.card-content{
+    float: left;
+    margin: auto;
+}
+
+.card-img{
+width: 120px;
+
+}
+
+.card-img img{
+    height: 70%;
+}
+
+.card-body{
+   max-height: 300px;
+}

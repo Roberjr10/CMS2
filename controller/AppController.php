@@ -56,7 +56,7 @@ class AppController
         }
 
         //Llamo a la vista
-        $this->view->vista("app", "noticias", $peliculas);
+        $this->view->vista("app", "peliculas", $peliculas);
 
     }
 
@@ -70,7 +70,7 @@ class AppController
         $pelicula= new Pelicula($row);
 
         //Llamo a la vista
-        $this->view->vista("app", "noticia", $pelicula);
+        $this->view->vista("app", "pelicula", $pelicula);
 
     }
 }

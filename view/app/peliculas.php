@@ -1,23 +1,25 @@
 <h3>
-    <a href="<?php echo $_SESSION['home'] ?>" title="Inicio">Inicio</a> <span>| Noticias</span>
+    <a href="<?php echo $_SESSION['home'] ?>" title="Inicio">Inicio</a> <span>| Películas</span>
 </h3>
-<div class="row">
+<div class="row ">
     <?php foreach ($datos as $row){ ?>
-        <article class="col m12 l6">
-            <div class="card horizontal small">
-                <div class="card-image">
+        <article class="col col-sm-6 col-md-3 col-lg-6">
+            <div class="card">
+                <div class="card-img-top">
                     <img src="<?php echo $_SESSION['public']."img/".$row->imagen ?>" alt="<?php echo $row->titulo ?>">
                 </div>
-                <div class="card-stacked">
-                    <div class="card-content">
+                <div class="card-body">
+                    <div class="card-text">
                         <h4><?php echo $row->titulo ?></h4>
-                        <p><?php echo $row->entradilla ?></p>
                     </div>
-                    <div class="card-info">
-                        <p><?php echo date("d/m/Y", strtotime($row->fecha)) ?></p>
+                    <div class="footer-card">
+                    <div class="card-text">
+                        <p><b>Fecha de estreno: </b><?php echo date("d/m/Y", strtotime($row->fecha)) ?></p>
                     </div>
+                        <hr>
                     <div class="card-action">
-                        <a href="<?php echo $_SESSION['home']."noticia/".$row->slug ?>">Más información</a>
+                        <a href="<?php echo $_SESSION['home']."pelicula/".$row->slug ?>">Más información</a>
+                    </div>
                     </div>
                 </div>
             </div>
