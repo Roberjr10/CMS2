@@ -153,7 +153,7 @@ class PersonaController
             $usuario = filter_input(INPUT_POST, "usuario", FILTER_SANITIZE_STRING);
             $clave = filter_input(INPUT_POST, "clave", FILTER_SANITIZE_STRING);
             $usuarios = (filter_input(INPUT_POST, 'usuarios', FILTER_SANITIZE_STRING) == 'on') ? 1 : 0;
-            $noticias = (filter_input(INPUT_POST, 'noticias', FILTER_SANITIZE_STRING) == 'on') ? 1 : 0;
+            $peliculas = (filter_input(INPUT_POST, 'peliculas', FILTER_SANITIZE_STRING) == 'on') ? 1 : 0;
             $cambiar_clave = (filter_input(INPUT_POST, 'cambiar_clave', FILTER_SANITIZE_STRING) == 'on') ? 1 : 0;
 
             //Encripto la clave
@@ -162,7 +162,7 @@ class PersonaController
             if ($id == "nuevo"){
 
                 //Creo un nuevo usuario
-                $this->db->exec("INSERT INTO personas (usuario, clave, noticias, usuarios) VALUES ('$usuario','$clave_encriptada',$noticias,$usuarios)");
+                $this->db->exec("INSERT INTO personas (nombre, clave, peliculas, acceso) VALUES ('$usuario','$clave_encriptada',$peliculas,$usuarios)");
 
                 //Mensaje y redirección
                 $this->view->redireccionConMensaje("admin/personas","green","El usuario <strong>$usuario</strong> se creado correctamente.");
@@ -171,11 +171,11 @@ class PersonaController
 
                 //Actualizo el usuario
                 ($cambiar_clave) ?
-                    $this->db->exec("UPDATE personas SET nombre='$usuario',clave='$clave_encriptada',noticias=$noticias,usuarios=$usuarios WHERE id='$id'") :
-                    $this->db->exec("UPDATE personas SET nombre='$usuario',noticias=$noticias,usuarios=$usuarios WHERE id='$id'");
+                    $this->db->exec("UPDATE personas SET nombre='$usuario',clave='$clave_encriptada',peliculas=$peliculas,acceso=$usuarios WHERE id='$id'") :
+                    $this->db->exec("UPDATE personas SET nombre='$usuario',peliculas=$peliculas,acceso=$usuarios WHERE id='$id'");
 
                 //Mensaje y redirección
-                $this->view->redireccionConMensaje("admin/usuarios","green","El usuario <strong>$usuario</strong> se actualizado correctamente.");
+                $this->view->redireccionConMensaje("admin/personas","green","El usuario <strong>$usuario</strong> se actualizado correctamente.");
             }
         }
 
@@ -188,7 +188,41 @@ class PersonaController
             $usuario = new Persona($row);
 
             //Llamo a la ventana de edición
-            $this->view->vista("admin","usuarios/editar", $usuario);
+            $this->view->vista("admin","personas/editar", $usuario);
+        }
+
+    }
+    //Para activar o desactivar
+    public function activar($id){
+
+        //Permisos
+        $this->view->permisos("personas");
+
+        //Obtengo el usuario
+        $rowset = $this->db->query("SELECT * FROM personas WHERE id='$id' LIMIT 1");
+        $row = $rowset->fetch(\PDO::FETCH_OBJ);
+        $usuario = new Persona($row);
+
+        if ($usuario->activo == 1){
+
+            //Desactivo el usuario
+            $consulta = $this->db->exec("UPDATE personas SET activo=0 WHERE id='$id'");
+
+            //Mensaje y redirección
+            ($consulta > 0) ? //Compruebo consulta para ver que no ha habido errores
+                $this->view->redireccionConMensaje("admin/personas","green","El usuario <strong>$usuario->usuario</strong> se ha desactivado correctamente.") :
+                $this->view->redireccionConMensaje("admin/personass","red","Hubo un error al guardar en la base de datos.");
+        }
+
+        else{
+
+            //Activo el usuario
+            $consulta = $this->db->exec("UPDATE personas SET activo=1 WHERE id='$id'");
+
+            //Mensaje y redirección
+            ($consulta > 0) ? //Compruebo consulta para ver que no ha habido errores
+                $this->view->redireccionConMensaje("admin/personas","green","El usuario <strong>$usuario->usuario</strong> se ha activado correctamente.") :
+                $this->view->redireccionConMensaje("admin/personas","red","Hubo un error al guardar en la base de datos.");
         }
 
     }

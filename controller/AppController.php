@@ -8,6 +8,7 @@ use App\Helper\DbHelper;
 
 class AppController
 {
+    //Creamos dos variables
     var $db;
     var $view;
 
@@ -29,6 +30,7 @@ class AppController
 
         //Asigno resultados a un array de instancias del modelo
         $peliculas = array();
+        //mediante el metodo fetch asignamos una pelicula con el modelo de pelicula
         while ($row = $rowset->fetch(\PDO::FETCH_OBJ)){
             array_push($peliculas,new Pelicula($row));
         }

@@ -7,6 +7,7 @@ use App\Model\Pelicula;
 
 class PeliculaController
 {
+    //Creamos dos variables
     var $db;
     var $view;
 
@@ -23,7 +24,7 @@ class PeliculaController
 //Listado de noticias
     public function index(){
 
-        //Permisos
+        //Comprobamos los permisos que tiene esa sesion
         $this->view->permisos("peliculas");
 
         //Recojo las noticias de la base de datos
@@ -34,7 +35,7 @@ class PeliculaController
         while ($row = $rowset->fetch(\PDO::FETCH_OBJ)){
             array_push($peliculas,new Pelicula($row));
         }
-
+        //Llamo a la vista
         $this->view->vista("admin","peliculas/index", $peliculas);
 
     }
@@ -49,6 +50,7 @@ class PeliculaController
         $row = $rowset->fetch(\PDO::FETCH_OBJ);
         $pelicula = new Pelicula($row);
 
+        //Comprobamos que el valor activo de pelicula sea 1.
         if ($pelicula->activo == 1){
 
             //Desactivo la noticia
@@ -129,7 +131,7 @@ class PeliculaController
 
         //Mensaje y redirección
         ($consulta > 0) ? //Compruebo consulta para ver que no ha habido errores
-            $this->view->redireccionConMensaje("admin/peliculas","green","La noticia se ha borrado correctamente$texto_imagen.") :
+            $this->view->redireccionConMensaje("admin/peliculas","green","La película se ha borrado correctamente$texto_imagen.") :
             $this->view->redireccionConMensaje("admin/peliculas","red","Hubo un error al guardar en la base de datos.");
 
     }
@@ -142,7 +144,7 @@ class PeliculaController
         $pelicula = new Pelicula();
 
         //Llamo a la ventana de edición
-        $this->view->vista("admin","noticias/editar", $pelicula);
+        $this->view->vista("admin","peliculas/editar", $pelicula);
 
     }
     public function editar($id){
@@ -155,10 +157,10 @@ class PeliculaController
 
             //Recupero los datos del formulario
             $titulo = filter_input(INPUT_POST, "titulo", FILTER_SANITIZE_STRING);
-            $descripcion = filter_input(INPUT_POST, "entradilla", FILTER_SANITIZE_STRING);
-            $genero = filter_input(INPUT_POST, "autor", FILTER_SANITIZE_STRING);
+            $descripcion = filter_input(INPUT_POST, "descripcion", FILTER_SANITIZE_STRING);
+            $genero = filter_input(INPUT_POST, "genero", FILTER_SANITIZE_STRING);
             $fecha = filter_input(INPUT_POST, "fecha", FILTER_SANITIZE_STRING);
-            $duracion = filter_input(INPUT_POST, "texto", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $duracion = filter_input(INPUT_POST, "duracion", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
             //Formato de fecha para SQL
             $fecha = \DateTime::createFromFormat("d-m-Y", $fecha)->format("Y-m-d H:i:s");
@@ -169,6 +171,7 @@ class PeliculaController
             //Imagen
             $imagen_recibida = $_FILES['imagen'];
             $imagen = ($_FILES['imagen']['name']) ? $_FILES['imagen']['name'] : "";
+
             $imagen_subida = ($_FILES['imagen']['name']) ? '/var/www/html'.$_SESSION['public']."img/".$_FILES['imagen']['name'] : "";
             $texto_img = ""; //Para el mensaje
 
@@ -176,7 +179,7 @@ class PeliculaController
 
                 //Creo una nueva noticia
                 $consulta = $this->db->exec("INSERT INTO peliculas 
-                    (titulo, descripcion, genero, fecha, texto, slug, imagen) VALUES 
+                    (titulo, descripcion, genero, fecha, duracion, slug, imagen) VALUES 
                     ('$titulo','$descripcion','$genero','$fecha','$duracion','$slug','$imagen')");
 
                 //Subo la imagen
@@ -197,7 +200,7 @@ class PeliculaController
             else{
 
                 //Actualizo la noticia
-                $this->db->exec("UPDATE noticias SET 
+                $this->db->exec("UPDATE peliculas SET 
                     titulo='$titulo',descripcion='$descripcion',genero='$genero',
                     fecha='$fecha',duracion='$duracion',slug='$slug' WHERE id='$id'");
 

@@ -18,4 +18,10 @@
         </form>
     </div>
     <div class="col-lg-4"></div>
+    <?php if (Session::has("tipo") && Session::has("texto")){?>
+    <div class="alert alert-danger">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong> <?php echo Session::get("tipo")?></strong> <?php echo Session::get("texto")?>
+    </div>
+    <?php } ?>
 </div>

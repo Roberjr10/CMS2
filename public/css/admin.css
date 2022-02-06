@@ -33,6 +33,13 @@ footer p{
 .card{ margin-top: 20px;
     margin-bottom: 20px
 }
+.green-text{
+    color: green;
+}
+
+.red-text{
+    color: red;
+}
 article {
     min-height: 200px;
 }
@@ -72,4 +79,37 @@ width: 120px;
 
 .card-body{
    max-height: 300px;
+}
+
+.contenedor{
+    padding: 5px;
+
+    margin-left: 15px;
+    padding-top: 50px;
+}
+.datos input {
+    padding: 5px;
+    margin: 15px;
+    outline: none;
+    background-color: #dfe;
+    border: 0
+
+}
+
+
+.descripcion{
+    width: 100%;
+    height: 100%;
+}
+
+
+.botones{
+    padding-top: 30px;
+    margin: 10px;
+}
+.btn-image{
+    padding: 0px 20px 20px 20px;
+}
+.material-icons{
+    padding: 10px;
 }

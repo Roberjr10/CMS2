@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="4200ccdc-c162-4dc5-9f5b-6286c4e3681f" name="cms-laravel" url="http://13.36.251.181/cms-laravel">
+        <fileTransfer rootFolder="/var/www/html/cms-laravel" accessType="SFTP" host="13.36.251.181" port="990" sshConfigId="e64af764-85d1-4c20-a146-f85183e1c8b8" sshConfig="ubuntu@13.36.251.181:990 key" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

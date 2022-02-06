@@ -9,11 +9,12 @@
 
 </body>
 
-
-<!--JS-->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-<script src="<?php echo $_SESSION['public'] ?>js/app.js"></script>
+
+<script src="<?php echo $_SESSION['public'] ?>js/admin.js"></script>
+
+
 <!--Script de boostrap-->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

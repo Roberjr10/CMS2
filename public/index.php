@@ -38,7 +38,7 @@ function autoload($clase,$dir=null){
     }
 
 }
-
+//Esta funcion se encargara de llamar al controlador correspondiente
 function controlador($nombre=null){
 
     switch($nombre){

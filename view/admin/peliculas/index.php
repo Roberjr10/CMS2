@@ -56,7 +56,7 @@
                         <a href="<?php echo $_SESSION['home']."admin/peliculas/home/".$row->id ?>" title="<?php echo $title ?>">
                             <i class="<?php echo $color ?> material-icons">home</i>
                         </a>
-                        <a href="#" class="activator" title="Borrar">
+                        <a href="<?php echo $_SESSION['home']."admin/peliculas/borrar/".$row->id ?>" title="Borrar" class="activator" title="Borrar">
                             <i class="material-icons">delete</i>
                         </a>
                     </div>

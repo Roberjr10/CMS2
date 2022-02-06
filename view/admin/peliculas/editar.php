@@ -1,70 +1,70 @@
 <h3>
     <a href="<?php echo $_SESSION['home'] ?>admin" title="Inicio">Inicio</a> <span>| </span>
-    <a href="<?php echo $_SESSION['home'] ?>admin/peliculas" title="Peliculas">-Películas</a> <span>| </span>
+    <a href="<?php echo $_SESSION['home'] ?>admin/peliculas" title="Peliculas">Películas</a> <span>| </span>
     <?php if ($datos->id){ ?>
         <span>Editar <?php echo $datos->titulo ?></span>
     <?php } else { ?>
         <span>Nueva pelicula</span>
     <?php } ?>
 </h3>
-<div class="row">
+<div class="contenedor row card">
     <?php $id = ($datos->id) ? $datos->id : "nuevo" ?>
-    <form class="col s12" method="POST" enctype="multipart/form-data" action="<?php echo $_SESSION['home'] ?>admin/peliculas/editar/<?php echo $id ?>">
-        <div class="col m12 l6">
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="titulo" type="text" name="titulo" value="<?php echo $datos->titulo ?>">
+    <form class="col-12 form-group row" method="POST" enctype="multipart/form-data" action="<?php echo $_SESSION['home'] ?>admin/peliculas/editar/<?php echo $id ?>">
+            <div class="datos col-6">
                     <label for="titulo">Título</label>
-                </div>
-                <div class="input-field col s12">
-                    <input id="autor" type="text" name="autor" value="<?php echo $datos->autor ?>">
-                    <label for="autor">Autor</label>
-                </div>
-                <div class="input-field col s12">
+                    <input id="titulo" type="text" name="titulo" value="<?php echo $datos->titulo ?>"><br/>
+
+                    <label for="duracion">Duracion</label>
+                    <input id="duracion" type="text" name="duracion" value="<?php echo $datos->duracion ?>"><br/>
+                <label for="genero">Género</label>
+                <input id="genero" class="genero" name="genero"  value="<?php echo $datos->genero ?>"</input>
+                <br/>
+
                     <?php $fecha = ($datos->fecha) ? date("d-m-Y", strtotime($datos->fecha)) : date("d-m-Y") ?>
+                <label for="fecha">Fecha</label>
                     <input id="fecha" type="text" name="fecha" class="datepicker" value="<?php echo $fecha ?>">
-                    <label for="fecha">Fecha</label>
-                </div>
+
+
             </div>
-        </div>
-        <div class="col m12 l6 center-align">
-            <div class="file-field input-field">
-                <div class="btn">
+
+            <div class="imagen col-6">
+
+                <div class="btn-image col-12">
                     <span>Imagen</span>
                     <input type="file" name="imagen">
                 </div>
-                <div class="file-path-wrapper">
-                    <input class="file-path validate" type="text">
-                </div>
-            </div>
+
+                <div class="col-12">
             <?php if ($datos->imagen){ ?>
-                <img src="<?php echo $_SESSION['public']."img/".$datos->imagen ?>" alt="<?php echo $datos->titulo ?>">
+                <img style="width: 100%; height: 300px"src="<?php echo $_SESSION['public']."img/".$datos->imagen ?>" alt="<?php echo $datos->titulo ?>">
             <?php } ?>
+
+                </div>
         </div>
-        <div class="col s12">
-            <div class="row">
-                <div class="input-field col s12">
-                    <textarea id="entradilla" class="materialize-textarea" name="entradilla"><?php echo $datos->descripcion ?></textarea>
-                    <label for="entradilla">Entradilla</label>
-                </div>
-                <div class="input-field col s12">
-                    <textarea id="texto" class="materialize-textarea" name="texto"><?php echo $datos->texto ?></textarea>
-                    <label for="texto">Texto</label>
-                </div>
-            </div>
+        <div class="col-12">
+
+            <label for="descripcion">Descripción</label><br/>
+                    <textarea id="descripcion" name="descripcion" class="descripcion"><?php echo $datos->descripcion ?></textarea>
+
+
         </div>
 
-        <div class="row">
-            <div class="input-field col s12">
+
+
+        <div class="botones col-12">
+
                 <a href="<?php echo $_SESSION['home'] ?>admin/peliculass" title="Volver">
-                    <button class="btn waves-effect waves-light" type="button">Volver
+                    <button class="btn btn-warning" type="button">Volver
                         <i class="material-icons right">replay</i>
                     </button>
                 </a>
-                <button class="btn waves-effect waves-light" type="submit" name="guardar">Guardar
+
+                <button class="btn btn-success" type="submit" name="guardar">Guardar
                     <i class="material-icons right">save</i>
                 </button>
-            </div>
+
+
         </div>
     </form>
 </div>
+

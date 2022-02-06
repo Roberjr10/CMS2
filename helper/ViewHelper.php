@@ -21,7 +21,7 @@ class ViewHelper {
         header("Location:".$_SESSION["home"].$ruta);
 
     }
-
+    //Funcion que comprueba los permisos de cada usuario
     public function permisos($permiso=null){
 
         if (isset($_SESSION['persona']) AND ($permiso == null OR $_SESSION[$permiso] == 1)){
